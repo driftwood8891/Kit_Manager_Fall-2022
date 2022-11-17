@@ -34,7 +34,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="StatusCode" class="control-label"></label>
-                <input asp-for="StatusCode" class="form-control" />
+	            @*<input asp-for="StatusCode" class="form-control" />*@
+	            <select asp-for="StatusCode" class ="form-control" asp-items="Html.GetEnumSelectList<DropDownLists.statusOptions>()"></select>
                 <span asp-validation-for="StatusCode" class="text-danger"></span>
             </div>
             <div class="form-group">

@@ -24,9 +24,10 @@ namespace Kit_Manager_Fall_2022.Models
         [Display(Name = "Kit ID")]
         [Required(ErrorMessage = "Kit ID is required.")]
         public int KitId { get; set; }
+
         [Display(Name = "Status Code")]
         [Required(ErrorMessage = "Enter a number between 1 and 9.")]
-        [Range (1,9)]
+        [Range(1, 9)]
         public int StatusCode { get; set; }
         [Display(Name = "Student ID")]
         [Required(ErrorMessage = "Student ID is required.")]

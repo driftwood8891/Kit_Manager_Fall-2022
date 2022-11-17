@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Equipment>
+
+@{
+	ViewData["Title"] = "Index";
+}
+
+<h1>Reports</h1>
+
+<ul class="navbar-nav flex-grow-1">
+	<li class="nav-item">
+		<a class="nav-link" asp-area="" asp-controller="Reports" asp-action="Checked_In">Kits/Items - Checked-In</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" asp-area="" asp-controller="Reports" asp-action="Checked_Out">Kits/Items - Checked-Out</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" asp-area="" asp-controller="Reports" asp-action="Lost">Kits/Items - Lost</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" asp-area="" asp-controller="Reports" asp-action="Unknown">Kits/Items - Unknown</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" asp-area="" asp-controller="Reports" asp-action="PastUser">Kits/Items - By Past User</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" asp-area="" asp-controller="Reports" asp-action="ByUser">Kits/Items - By User</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" asp-area="" asp-controller="Reports" asp-action="Pending">Kits/Items - Returned - Not yet checked in</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" asp-area="" asp-controller="Reports" asp-action="Location">Kits/Items - By Location</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" asp-area="" asp-controller="Reports" asp-action="">Kits/Items - Needs Repair</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" asp-area="" asp-controller="Reports" asp-action="">Kits/Items - Ready</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" asp-area="" asp-controller="Reports" asp-action="">Kits/Items - In Transit</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" asp-area="" asp-controller="Reports" asp-action="Dead">Kits/Items - Dead</a>
+	</li>
+	<li class="nav-item">
+		<a class="nav-link" asp-area="" asp-controller="Reports" asp-action="MultipleTables">Multiple tables - Location</a>
+	</li>
+</ul>
