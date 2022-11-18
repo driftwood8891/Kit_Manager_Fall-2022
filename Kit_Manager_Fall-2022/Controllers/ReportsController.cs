@@ -26,5 +26,14 @@ namespace Kit_Manager_Fall_2022.Controllers
 
             return View(checked_in);
         }
-    }
+
+        public IActionResult Checked_Out()
+        {
+	        // Fetch data
+
+	        var checked_out = from e in _context.Equipment where e.StatusCode == 2 select e;
+
+	        return View(checked_out);
+        }
+	}
 }

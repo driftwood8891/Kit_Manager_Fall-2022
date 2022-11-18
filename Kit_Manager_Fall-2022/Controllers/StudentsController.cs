@@ -20,9 +20,29 @@ namespace Kit_Manager_Fall_2022.Controllers
         }
 
         // GET: Students
-        public async Task<IActionResult> Index()
+        //public async Task<IActionResult> Index()
+        //{
+        //    return View(await _context.Student.ToListAsync());
+        //}
+
+
+        public async Task<IActionResult> Index(string SearchText = "")
         {
-            return View(await _context.Student.ToListAsync());
+            //var applicationDbContext = _context.Equipment.Include(e => e.Student);
+            //return View(await applicationDbContext.ToListAsync());
+
+            List<Student> students;
+
+            if (SearchText != "" && SearchText != null)
+            {
+                students = _context.Student
+                    .Where(p => p.StudentId.Contains(SearchText))
+                    .ToList();
+            }
+            else 
+                students = _context.Student.ToList();
+            return View(students);
+
         }
 
         // GET: Students/Details/5

@@ -4,92 +4,107 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Student Management</h1>
+
+<div>
+    <form asp-controller="Students" asp-action="Index">
+        <span class="btn-group">
+            <input class="form-control" type="text" name="SearchText" placeholder="Search Key" />
+            <input class="p-1 ml-2 btn btn-sm btn-info" type="submit" value="Search" />
+        </span>
+    </form>
+</div>
 
 <p>
     <a asp-action="Create">Create New</a>
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CollegeEmail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PersonalEmail)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Phone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Campus)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Active)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HasItem)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastEdit)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmergencyContact)
-            </th>
-            <th></th>
-        </tr>
+    <tr>
+	    <th>
+		    @Html.DisplayNameFor(model => model.StudentId)
+	    </th>
+	    <th>
+		    @Html.DisplayNameFor(model => model.FName)
+	    </th>
+	    <th>
+		    @Html.DisplayNameFor(model => model.LName)
+	    </th>
+	    <th>
+		    @Html.DisplayNameFor(model => model.CollegeEmail)
+	    </th>
+	    <th>
+		    @Html.DisplayNameFor(model => model.PersonalEmail)
+	    </th>
+	    <th>
+		    @Html.DisplayNameFor(model => model.Phone)
+	    </th>
+	    <th>
+		    @Html.DisplayNameFor(model => model.Address)
+	    </th>
+	    <th>
+		    @Html.DisplayNameFor(model => model.Campus)
+	    </th>
+	    <th>
+		    @Html.DisplayNameFor(model => model.Active)
+	    </th>
+	    <th>
+		    @Html.DisplayNameFor(model => model.HasItem)
+	    </th>
+	    <th>
+		    @Html.DisplayNameFor(model => model.LastEdit)
+	    </th>
+	    <th>
+		    @Html.DisplayNameFor(model => model.EmergencyContact)
+	    </th>
+	    <th></th>
+    </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CollegeEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PersonalEmail)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Phone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Campus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Active)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HasItem)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.LastEdit)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmergencyContact)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.StudentId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.StudentId">Delete</a>
-            </td>
-        </tr>
+	<tr>
+		<th>
+			@Html.DisplayFor(modelItem => item.StudentId)
+		</th>
+		<td>
+			@Html.DisplayFor(modelItem => item.FName)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.LName)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.CollegeEmail)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.PersonalEmail)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Phone)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Address)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Campus)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Active)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.HasItem)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.LastEdit)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.EmergencyContact)
+		</td>
+		<td>
+			<a asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
+			<a asp-action="Details" asp-route-id="@item.StudentId">Details</a> |
+			<a asp-action="Delete" asp-route-id="@item.StudentId">Delete</a>
+		</td>
+	</tr>
 }
     </tbody>
 </table>

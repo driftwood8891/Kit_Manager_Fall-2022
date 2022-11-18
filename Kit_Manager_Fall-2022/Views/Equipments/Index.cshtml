@@ -4,11 +4,38 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="container p-3">
+	<div class="row pt-4">
+		<div class="col-6">
+			<h2 class="text-primary"> Equipment</h2>
+		</div>
+		<div class="col-6">
+			<a asp-controller="Equipments" asp-action="Create" class="btn btn-outline-warning">
+				<i class="bi bi-plus-circle"></i>&nbsp; Add Kit
+			</a>
+			<a asp-controller="Equipments" asp-action="AddItem" class="btn btn-outline-warning">
+				<i class="bi bi-plus-circle"></i>&nbsp; Add Item
+			</a>
+		</div>
+	</div>
+</div>
+<br/>
 
-<p>
+
+<div>
+	<form asp-controller="Equipments" asp-action="Index">
+		<span class="btn-group">
+			<input class="form-control" type="text" name="SearchText" placeholder="Search Key"/>
+			<input class="p-1 ml-2 btn btn-sm btn-info" type="submit" value="Search"/>
+		</span>
+	</form>
+</div>
+
+<br/>
+
+@*<p>
     <a asp-action="Create">Create New</a>
-</p>
+</p>*@
 <table class="table">
     <thead>
         <tr>

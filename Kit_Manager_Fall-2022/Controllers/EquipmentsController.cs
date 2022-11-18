@@ -20,11 +20,30 @@ namespace Kit_Manager_Fall_2022.Controllers
         }
 
         // GET: Equipments
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string SearchText = "")
         {
-            var applicationDbContext = _context.Equipment.Include(e => e.Student);
-            return View(await applicationDbContext.ToListAsync());
+            //var applicationDbContext = _context.Equipment.Include(e => e.Student);
+            //return View(await applicationDbContext.ToListAsync());
+
+            List<Equipment> equipments;
+
+            if (SearchText != "" && SearchText != null)
+            {
+                equipments = _context.Equipment
+                    .Where(p => p.ItemName.Contains(SearchText))
+                    .ToList();
+            }
+            else
+                equipments = _context.Equipment.ToList();
+            return View(equipments);
+
         }
+
+        //public async Task<IActionResult> Index()
+        //{
+        //    var applicationDbContext = _context.Equipment.Include(e => e.Student);
+        //    return View(await applicationDbContext.ToListAsync());
+        //}
 
         // GET: Equipments/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -48,6 +67,9 @@ namespace Kit_Manager_Fall_2022.Controllers
         // GET: Equipments/Create
         public IActionResult Create()
         {
+            ViewBag.InstructorName = new List<string>() {"Rich Bright", "David Pence","Semi Necibi"};
+            ViewBag.ItemType = new List<string>() { "Network Kit", "Backpack Kit", "Raspberry Pi Kit", "BuilderBox", "Single Item" };
+
             ViewData["StudentId"] = new SelectList(_context.Student, "StudentId", "StudentId");
             return View();
         }
@@ -155,6 +177,18 @@ namespace Kit_Manager_Fall_2022.Controllers
         private bool EquipmentExists(int id)
         {
             return _context.Equipment.Any(e => e.ItemId == id);
+        }
+
+        public async Task<IActionResult> AddItem([Bind("ItemId,ItemType,ItemName,ItemCost,KitId,StatusCode,StudentId,LastEdit,InstructorName,Course,Active")] Equipment equipment)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(equipment);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["StudentId"] = new SelectList(_context.Student, "StudentId", "StudentId", equipment.StudentId);
+            return View(equipment);
         }
     }
 }
