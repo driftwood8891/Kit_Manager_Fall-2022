@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Kit_Manager_Fall_2022.Data;
+using Kit_Manager_Fall_2022.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,6 +17,19 @@ namespace Kit_Manager_Fall_2022.Controllers
         public IActionResult Index()
         {
             return View();
+        }
+
+
+        public IActionResult AssignItems()
+        {
+
+            var tables = new SharedData()
+            {
+                studentdetails = _context.Student.ToList(),
+                equipmentdetails = _context.Equipment.ToList()
+            };
+
+            return View(tables);
         }
 
         public IActionResult Checked_In()

@@ -1,0 +1,78 @@
+﻿@model SharedData
+
+@{
+	ViewData["Title"] = "Create";
+}
+
+<h1>Assign Items</h1>
+
+<h4>Student Table</h4>
+<hr />
+
+<table class="table table-striped">
+	<tr>
+		<td>Student ID</td>
+		<td>First Name</td>
+		<td>Last Name</td>
+		<td>College Email</td>
+		<td>Personal Email</td>
+		<td>Phone Number</td>
+		<td>Address</td>
+		<td>Campus</td>
+		<td>Active</td>
+		<td>Has item</td>
+		<td>Last Edit</td>
+	</tr>
+	@foreach (var item in Model.studentdetails)
+	{
+		<tr>
+			<td>@item.StudentId</td>
+			<td>@item.FName</td>
+			<td>@item.LName</td>
+			<td>@item.CollegeEmail</td>
+			<td>@item.PersonalEmail</td>
+			<td>@item.Phone</td>
+			<td>@item.Address</td>
+			<td>@item.Campus</td>
+			<td>@item.Active</td>
+			<td>@item.HasItem</td>
+			<td>@item.LastEdit</td>
+		</tr>
+	}
+</table>
+
+<hr/>
+<h4>Equipment Table</h4>
+<hr/>
+
+<table class="table table-striped">
+	<tr>
+		<td>Item ID</td>
+		<td>Item type</td>
+		<td>Item Name</td>
+		<td>Item Cost</td>
+		<td>Kit ID</td>
+		<td>Status Code</td>
+		<td>Student ID</td>
+		<td>Last Edit</td>
+		<td>Instructor Name</td>
+		<td>Course</td>
+		<td>Active</td>
+	</tr>
+	@foreach (var item2 in Model.equipmentdetails)
+	{
+		<tr>
+			<td>@item2.ItemId</td>
+			<td>@item2.ItemType</td>
+			<td>@item2.ItemName</td>
+			<td>@item2.ItemCost</td>
+			<td>@item2.KitId</td>
+			<td>@item2.StatusCode</td>
+			<td>@item2.StudentId</td>
+			<td>@item2.LastEdit</td>
+			<td>@item2.InstructorName</td>
+			<td>@item2.Course</td>
+			<td>@item2.Active</td>
+		</tr>
+	}
+</table>
