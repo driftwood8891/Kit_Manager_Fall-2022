@@ -66,7 +66,8 @@ namespace Kit_Manager_Fall_2022.Controllers
         // GET: Students/Create
         public IActionResult Create()
         {
-            return View();
+	        ViewBag.Campus = new List<string>() { "Columbia", "Hannibal", "Kirksville","Mexico", "Moberly" };
+			return View();
         }
 
         // POST: Students/Create
