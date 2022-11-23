@@ -34,6 +34,8 @@ namespace Kit_Manager_Fall_2022
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
             services.AddRazorPages();
+            //***Add this line to enable RazorRuntimeCompilation, download Install-Package Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation -Version 3.0.0
+            services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

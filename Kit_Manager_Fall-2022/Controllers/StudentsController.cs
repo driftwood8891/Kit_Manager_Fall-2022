@@ -19,17 +19,8 @@ namespace Kit_Manager_Fall_2022.Controllers
             _context = context;
         }
 
-        // GET: Students
-        //public async Task<IActionResult> Index()
-        //{
-        //    return View(await _context.Student.ToListAsync());
-        //}
-
-
         public async Task<IActionResult> Index(string SearchText = "")
         {
-            //var applicationDbContext = _context.Equipment.Include(e => e.Student);
-            //return View(await applicationDbContext.ToListAsync());
 
             List<Student> students;
 
@@ -44,6 +35,10 @@ namespace Kit_Manager_Fall_2022.Controllers
             return View(students);
 
         }
+
+
+
+        // DETAILS ACTION
 
         // GET: Students/Details/5
         public async Task<IActionResult> Details(string id)
@@ -63,6 +58,10 @@ namespace Kit_Manager_Fall_2022.Controllers
             return View(student);
         }
 
+
+
+        // CREATE ACTION
+
         // GET: Students/Create
         public IActionResult Create()
         {
@@ -81,10 +80,18 @@ namespace Kit_Manager_Fall_2022.Controllers
             {
                 _context.Add(student);
                 await _context.SaveChangesAsync();
+
+                //Create Alert
+                TempData["success"] = "Student was created successfully";
+
                 return RedirectToAction(nameof(Index));
             }
             return View(student);
         }
+
+
+
+        // EDIT ACTION
 
         // GET: Students/Edit/5
         public async Task<IActionResult> Edit(string id)
@@ -132,10 +139,18 @@ namespace Kit_Manager_Fall_2022.Controllers
                         throw;
                     }
                 }
+
+                //Create Alert
+                TempData["success"] = "Student was updated successfully";
+
                 return RedirectToAction(nameof(Index));
             }
             return View(student);
         }
+
+
+
+        // DELETE ACTION
 
         // GET: Students/Delete/5
         public async Task<IActionResult> Delete(string id)
@@ -163,6 +178,10 @@ namespace Kit_Manager_Fall_2022.Controllers
             var student = await _context.Student.FindAsync(id);
             _context.Student.Remove(student);
             await _context.SaveChangesAsync();
+
+            //Create Alert
+            TempData["success"] = "Student was deleted successfully";
+
             return RedirectToAction(nameof(Index));
         }
 

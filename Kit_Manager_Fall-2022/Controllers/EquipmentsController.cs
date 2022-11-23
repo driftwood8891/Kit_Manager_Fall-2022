@@ -22,9 +22,6 @@ namespace Kit_Manager_Fall_2022.Controllers
         // GET: Equipments
         public async Task<IActionResult> Index(string SearchText = "")
         {
-            //var applicationDbContext = _context.Equipment.Include(e => e.Student);
-            //return View(await applicationDbContext.ToListAsync());
-
             List<Equipment> equipments;
 
             if (SearchText != "" && SearchText != null)
@@ -35,15 +32,12 @@ namespace Kit_Manager_Fall_2022.Controllers
             }
             else
                 equipments = _context.Equipment.ToList();
-            return View(equipments);
-
+                return View(equipments);
         }
 
-        //public async Task<IActionResult> Index()
-        //{
-        //    var applicationDbContext = _context.Equipment.Include(e => e.Student);
-        //    return View(await applicationDbContext.ToListAsync());
-        //}
+
+
+        // DETAILS ACTION
 
         // GET: Equipments/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -64,32 +58,9 @@ namespace Kit_Manager_Fall_2022.Controllers
             return View(equipment);
         }
 
-        // GET: Equipments/Create
-        public IActionResult Create()
-        {
-            ViewBag.InstructorName = new List<string>() {"Rich Bright", "David Pence","Semi Necibi"};
-            ViewBag.ItemType = new List<string>() { "Network Kit", "Backpack Kit", "Raspberry Pi Kit", "BuilderBox", "Single Item" };
 
-            ViewData["StudentId"] = new SelectList(_context.Student, "StudentId", "StudentId");
-            return View();
-        }
 
-        // POST: Equipments/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ItemId,ItemType,ItemName,ItemCost,KitId,StatusCode,StudentId,LastEdit,InstructorName,Course,Active")] Equipment equipment)
-        {
-            if (ModelState.IsValid)
-            {
-                _context.Add(equipment);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            ViewData["StudentId"] = new SelectList(_context.Student, "StudentId", "StudentId", equipment.StudentId);
-            return View(equipment);
-        }
+        // EDIT ACTION
 
         // GET: Equipments/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -138,11 +109,19 @@ namespace Kit_Manager_Fall_2022.Controllers
                         throw;
                     }
                 }
+
+                //Edit Alert
+                TempData["success"] = "Equipment was edited successfully";
+
                 return RedirectToAction(nameof(Index));
             }
             ViewData["StudentId"] = new SelectList(_context.Student, "StudentId", "StudentId", equipment.StudentId);
             return View(equipment);
         }
+
+
+
+        // DELETE ACTION
 
         // GET: Equipments/Delete/5
         public async Task<IActionResult> Delete(int? id)
@@ -171,6 +150,10 @@ namespace Kit_Manager_Fall_2022.Controllers
             var equipment = await _context.Equipment.FindAsync(id);
             _context.Equipment.Remove(equipment);
             await _context.SaveChangesAsync();
+
+            //Delete Alert
+            TempData["success"] = "Equipment was deleted successfully";
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -179,16 +162,72 @@ namespace Kit_Manager_Fall_2022.Controllers
             return _context.Equipment.Any(e => e.ItemId == id);
         }
 
+
+
+        // ADDKIT ACTION
+
+        // GET: Equipments/AddKit
+        public IActionResult AddKit()
+        {
+            ViewBag.InstructorName = new List<string>() { "Rich Bright", "David Pence", "Semi Necibi" };
+            ViewBag.ItemType = new List<string>() { "Network Kit", "Backpack Kit", "Raspberry Pi Kit", "BuilderBox", "Single Item" };
+
+            ViewData["StudentId"] = new SelectList(_context.Student, "StudentId", "StudentId");
+            return View();
+        }
+
+        // POST: Equipments/AddKit
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddKit([Bind("ItemId,ItemType,ItemName,ItemCost,KitId,StatusCode,StudentId,LastEdit,InstructorName,Course,Active")] Equipment equipment)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(equipment);
+                await _context.SaveChangesAsync();
+
+                //AddKit Alert
+                TempData["success"] = "Kit was created successfully";
+
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["StudentId"] = new SelectList(_context.Student, "StudentId", "StudentId", equipment.StudentId);
+            return View(equipment);
+        }
+
+
+
+        // ADDITEM ACTION
+
+        // GET: Equipment/AddItem
+        public IActionResult AddItem()
+        {
+            ViewData["StudentId"] = new SelectList(_context.Student, "StudentId", "StudentId");
+            return View();
+        }
+
+        // POST: Equipment/AddItem
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddItem([Bind("ItemId,ItemType,ItemName,ItemCost,KitId,StatusCode,StudentId,LastEdit,InstructorName,Course,Active")] Equipment equipment)
         {
             if (ModelState.IsValid)
             {
                 _context.Add(equipment);
                 await _context.SaveChangesAsync();
+
+                //AddKit Alert
+                TempData["success"] = "Item was created successfully";
+
                 return RedirectToAction(nameof(Index));
             }
             ViewData["StudentId"] = new SelectList(_context.Student, "StudentId", "StudentId", equipment.StudentId);
             return View(equipment);
         }
+
     }
 }

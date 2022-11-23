@@ -49,7 +49,7 @@ namespace Kit_Manager_Fall_2022.Models
         [Display(Name = "Does the Student have a kit?")]
         [Required(ErrorMessage = "'Y' or 'N' is required.")]
         public string HasItem { get; set; }
-        [Display(Name = "Last Change orEdit")]
+        [Display(Name = "Last Change or Edit")]
         [Required(ErrorMessage = "Date and time is required.")]
         public DateTime LastEdit { get; set; }
         [Display(Name = "Emergency Contact")]

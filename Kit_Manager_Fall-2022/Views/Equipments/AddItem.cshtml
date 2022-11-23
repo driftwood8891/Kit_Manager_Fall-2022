@@ -4,12 +4,14 @@
     ViewData["Title"] = "AddItem";
 }
 
-<h1>Add Item</h1>
+<h1 class="text-light">Add Item</h1>
+<br />
 
+<h3>Equipment</h3>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="AddItem">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ItemType" class="control-label"></label>
@@ -61,15 +63,13 @@
                 <span asp-validation-for="Active" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-basic" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
 
 @section Scripts {
     @{

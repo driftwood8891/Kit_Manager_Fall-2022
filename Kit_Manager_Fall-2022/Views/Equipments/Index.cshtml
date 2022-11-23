@@ -4,38 +4,36 @@
     ViewData["Title"] = "Index";
 }
 
-<div class="container p-3">
-	<div class="row pt-4">
-		<div class="col-6">
-			<h2 class="text-primary"> Equipment</h2>
-		</div>
-		<div class="col-6">
-			<a asp-controller="Equipments" asp-action="Create" class="btn btn-outline-warning">
-				<i class="bi bi-plus-circle"></i>&nbsp; Add Kit
-			</a>
-			<a asp-controller="Equipments" asp-action="AddItem" class="btn btn-outline-warning">
-				<i class="bi bi-plus-circle"></i>&nbsp; Add Item
-			</a>
-		</div>
-	</div>
-</div>
-<br/>
 
+<h1 class="text-light">Equipment</h1>
 
 <div>
-	<form asp-controller="Equipments" asp-action="Index">
-		<span class="btn-group">
-			<input class="form-control" type="text" name="SearchText" placeholder="Search Key"/>
-			<input class="p-1 ml-2 btn btn-sm btn-info" type="submit" value="Search"/>
-		</span>
-	</form>
-</div>
+    
+    <div>
+        <form asp-controller="Equipments" asp-action="Index">
+            <span class="btn-group">
+                <input class="form-control" type="text" name="SearchText" placeholder="Search Key" />
+                <input class="p-1 ml-2 btn btn-sm btn-info" type="submit" value="Search" />
+            </span>
+        </form>
+    </div>
 
-<br/>
+    <br /><br />
 
-@*<p>
-    <a asp-action="Create">Create New</a>
-</p>*@
+    <p>
+        <a asp-action="AddKit" class="btn btn-basic">
+            @*Icon Code*@
+            <i class="bi bi-plus-circle"></i> &nbsp;
+            Add Kit
+        </a>
+
+        <a asp-action="AddItem" class="btn btn-basic">
+            @*Icon Code*@
+            <i class="bi bi-plus-circle"></i> &nbsp; Add Item
+        </a>
+    </p>
+
+
 <table class="table">
     <thead>
         <tr>
@@ -105,12 +103,27 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Student.StudentId)
             </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ItemId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ItemId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ItemId">Delete</a>
-            </td>
+                <td>
+                    @*//***Allign Icons in container**//*@
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-action="Edit" asp-route-id="@item.ItemId" class="btn btn-edit mx-2">
+                            @*Edit button code from Bootstrap Icon*@
+                            <i class="bi bi-pencil-square"></i>Edit
+                        </a>
+
+                        <a asp-action="Details" asp-route-id="@item.ItemId" class="btn btn-detail mx-2">
+                            @*Detail button code from Bootstrap Icon*@
+                            <i class="bi bi-three-dots"></i>Details
+                        </a>
+
+                        <a asp-action="Delete" asp-route-id="@item.ItemId" class="btn btn-delete mx-2">
+                            @*Delete button code from Bootstrap Icon*@
+                            <i class="bi bi-trash-fill"></i>Delete
+                        </a>
+                    </div>
+                </td>
         </tr>
 }
     </tbody>
 </table>
+</div>

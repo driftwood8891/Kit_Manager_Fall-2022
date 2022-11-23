@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Student Management</h1>
+<h1 class="text-light">Student Management</h1>
 
 <div>
     <form asp-controller="Students" asp-action="Index">
@@ -15,9 +15,15 @@
     </form>
 </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+<div>
+	<br /><br />
+	<p>
+		<a asp-action="Create" class="btn btn-basic">
+			@*Icon Code*@
+			<i class="bi bi-plus-circle"></i> &nbsp; Create New Student
+		</a>
+	</p>
+
 <table class="table">
     <thead>
     <tr>
@@ -30,18 +36,25 @@
 	    <th>
 		    @Html.DisplayNameFor(model => model.LName)
 	    </th>
-	    <th>
-		    @Html.DisplayNameFor(model => model.CollegeEmail)
-	    </th>
-	    <th>
-		    @Html.DisplayNameFor(model => model.PersonalEmail)
-	    </th>
-	    <th>
-		    @Html.DisplayNameFor(model => model.Phone)
-	    </th>
-	    <th>
-		    @Html.DisplayNameFor(model => model.Address)
-	    </th>
+
+				@*//***SEE THIS INFO IN DETAILS BUTTON***//*@
+
+				@*<th>
+					@Html.DisplayNameFor(model => model.CollegeEmail)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.PersonalEmail)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Phone)
+				</th>
+				<th>
+					@Html.DisplayNameFor(model => model.Address)
+				</th>
+				@*  <th>
+				@Html.DisplayNameFor(model => model.EmergencyContact)
+				</th>*@
+
 	    <th>
 		    @Html.DisplayNameFor(model => model.Campus)
 	    </th>
@@ -54,9 +67,7 @@
 	    <th>
 		    @Html.DisplayNameFor(model => model.LastEdit)
 	    </th>
-	    <th>
-		    @Html.DisplayNameFor(model => model.EmergencyContact)
-	    </th>
+	  
 	    <th></th>
     </tr>
     </thead>
@@ -72,18 +83,27 @@
 		<td>
 			@Html.DisplayFor(modelItem => item.LName)
 		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.CollegeEmail)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.PersonalEmail)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Phone)
-		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.Address)
-		</td>
+
+				
+				@*//***SEE THIS INFO IN DETAILS BUTTON***//*@
+				
+				@*<td>
+					@Html.DisplayFor(modelItem => item.CollegeEmail)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.PersonalEmail)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Phone)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.Address)
+				</td>
+				<td>
+					@Html.DisplayFor(modelItem => item.EmergencyContact)
+				</td>*@
+
+
 		<td>
 			@Html.DisplayFor(modelItem => item.Campus)
 		</td>
@@ -96,15 +116,28 @@
 		<td>
 			@Html.DisplayFor(modelItem => item.LastEdit)
 		</td>
-		<td>
-			@Html.DisplayFor(modelItem => item.EmergencyContact)
-		</td>
-		<td>
-			<a asp-action="Edit" asp-route-id="@item.StudentId">Edit</a> |
-			<a asp-action="Details" asp-route-id="@item.StudentId">Details</a> |
-			<a asp-action="Delete" asp-route-id="@item.StudentId">Delete</a>
-		</td>
+		
+			<td>
+                    @*//***Allign Icons in container**//*@
+                    <div class="w-75 btn-group" role="group">
+                        <a asp-action="Edit" asp-route-id="@item.StudentId" class="btn btn-edit mx-2">
+                            @*Edit button code from Bootstrap Icon*@
+                            <i class="bi bi-pencil-square"></i>Edit
+                        </a>
+
+                        <a asp-action="Details" asp-route-id="@item.StudentId" class="btn btn-detail mx-2">
+                            @*Detail button code from Bootstrap Icon*@
+                            <i class="bi bi-three-dots"></i>Details
+                        </a>
+
+                        <a asp-action="Delete" asp-route-id="@item.StudentId" class="btn btn-delete mx-2">
+                            @*Delete button code from Bootstrap Icon*@
+                            <i class="bi bi-trash-fill"></i>Delete
+                        </a>
+                    </div>
+                </td>
 	</tr>
 }
     </tbody>
 </table>
+</div>
