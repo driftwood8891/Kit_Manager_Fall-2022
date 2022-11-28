@@ -49,5 +49,23 @@ namespace Kit_Manager_Fall_2022.Controllers
 
 	        return View(checked_out);
         }
+
+        public IActionResult Lost()
+        {
+	        // Fetch data
+
+	        var lost = from e in _context.Equipment where e.StatusCode == 4 select e;
+
+	        return View(lost);
+        }
+
+        public IActionResult Unknown()
+        {
+	        // Fetch data
+
+	        var unknown = from e in _context.Equipment where e.StatusCode == 9 select e;
+
+	        return View(unknown);
+        }
 	}
 }
