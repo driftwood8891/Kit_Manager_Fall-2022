@@ -4,6 +4,7 @@
     {
         public enum statusOptions
         {
+            // Enum dropdown list for status code field - This maintains data integrity when creating database entries.
             
             Checked_In = 1,
             Checked_Out = 2,

@@ -22,12 +22,13 @@ namespace Kit_Manager_Fall_2022.Controllers
         // GET: Equipments
         public async Task<IActionResult> Index(string SearchText = "")
         {
+            // Code for search bar of the Equipment Index page
             List<Equipment> equipments;
 
             if (SearchText != "" && SearchText != null)
             {
                 equipments = _context.Equipment
-                    .Where(p => p.ItemName.Contains(SearchText))
+                    .Where(p => p.ItemName.Contains(SearchText)) // Searching by Item Name
                     .ToList();
             }
             else

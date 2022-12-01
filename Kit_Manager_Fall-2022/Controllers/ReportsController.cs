@@ -32,6 +32,9 @@ namespace Kit_Manager_Fall_2022.Controllers
             return View(tables);
         }
 
+        
+        // Server code for the Reports page - They are simple queries
+
         public IActionResult Checked_In()
         {
             // Fetch data

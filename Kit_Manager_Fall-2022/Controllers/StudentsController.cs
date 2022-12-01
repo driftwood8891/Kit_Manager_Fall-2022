@@ -21,13 +21,13 @@ namespace Kit_Manager_Fall_2022.Controllers
 
         public async Task<IActionResult> Index(string SearchText = "")
         {
-
+            // This is code for the search bar of the Student's Index page
             List<Student> students;
 
             if (SearchText != "" && SearchText != null)
             {
                 students = _context.Student
-                    .Where(p => p.StudentId.Contains(SearchText))
+                    .Where(p => p.StudentId.Contains(SearchText)) // Here we search by student ID number
                     .ToList();
             }
             else 
@@ -65,6 +65,7 @@ namespace Kit_Manager_Fall_2022.Controllers
         // GET: Students/Create
         public IActionResult Create()
         {
+            // Creating list boxes for the Student Create page so we maintain data integrity  
 	        ViewBag.Campus = new List<string>() { "Columbia", "Hannibal", "Kirksville","Mexico", "Moberly" };
 			return View();
         }

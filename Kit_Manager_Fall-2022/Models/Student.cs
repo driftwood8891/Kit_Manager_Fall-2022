@@ -16,8 +16,8 @@ namespace Kit_Manager_Fall_2022.Models
         }
 
         [Key]
-        [Display(Name = "Student ID")]
-        [Required(ErrorMessage = "Student ID is required.")]
+        [Display(Name = "Student ID")]                        // Display field name
+        [Required(ErrorMessage = "Student ID is required.")]  // Requires you to enter data into the field or will output error message
         public string StudentId { get; set; }
         [Display(Name = "First Name")]
         [Required(ErrorMessage = "First name is required.")]

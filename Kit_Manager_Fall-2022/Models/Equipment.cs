@@ -10,10 +10,10 @@ namespace Kit_Manager_Fall_2022.Models
 {
     public partial class Equipment
     {
-        [Key]
+        [Key]  
         public int ItemId { get; set; }
-        [Display(Name = "Item Type")]
-        [Required(ErrorMessage = "Type of item is required.")]
+        [Display(Name = "Item Type")]                           // Displays the field name
+        [Required(ErrorMessage = "Type of item is required.")]  // Requires you to enter data and outputs a message if you do not
         public string ItemType { get; set; }
         [Display(Name = "Item Name")]
         [Required(ErrorMessage = "Item name is required.")]
