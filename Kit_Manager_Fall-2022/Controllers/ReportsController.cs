@@ -19,7 +19,7 @@ namespace Kit_Manager_Fall_2022.Controllers
             return View();
         }
 
-
+        // The assign items page pulls data from both the equipment and student tables
         public IActionResult AssignItems()
         {
 
@@ -34,7 +34,6 @@ namespace Kit_Manager_Fall_2022.Controllers
 
         
         // Server code for the Reports page - They are simple queries
-
         public IActionResult Checked_In()
         {
             // Fetch data
