@@ -69,5 +69,71 @@ namespace Kit_Manager_Fall_2022.Controllers
 
 	        return View(unknown);
         }
-	}
+
+        public IActionResult Dead()
+        {
+            // Fetch data
+
+            var dead = from e in _context.Equipment where e.StatusCode == 3 select e;
+
+            return View(dead);
+        }
+
+        public IActionResult In_Transit()
+        {
+            // Fetch data
+
+            var transit = from e in _context.Equipment where e.StatusCode == 5 select e;
+
+            return View(transit);
+        }
+
+        public IActionResult Needs_Repair()
+        {
+            // Fetch data
+
+            var repair = from e in _context.Equipment where e.StatusCode == 6 select e;
+
+            return View(repair);
+        }
+
+        public IActionResult Pending()
+        {
+            // Fetch data
+
+            var pending = from e in _context.Equipment where e.StatusCode == 7 select e;
+
+            return View(pending);
+        }
+
+        public IActionResult Ready()
+        {
+            // Fetch data
+
+            var ready = from e in _context.Equipment where e.StatusCode == 8 select e;
+
+            return View(ready);
+        }
+
+        public IActionResult Past_User()
+        {
+            // Fetch data
+
+            return View();
+        }
+
+        public IActionResult By_User()
+        {
+            // Fetch data
+
+            return View();
+        }
+
+        public IActionResult Location()
+        {
+            // Fetch data
+
+            return View();
+        }
+    }
 }

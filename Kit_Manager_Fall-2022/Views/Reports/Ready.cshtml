@@ -1,0 +1,88 @@
+﻿@model IEnumerable<Kit_Manager_Fall_2022.Models.Equipment>
+
+
+    <h1>Checked-In Kits and Items</h1>
+
+    <p>
+        @*<a asp-action="Create">Create New</a>*@
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ItemCost)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.KitId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StatusCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastEdit)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.InstructorName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Course)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Active)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Student)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ItemCost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.KitId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StatusCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastEdit)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstructorName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Course)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Active)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Student.StudentId)
+                    </td>
+                    <td>
+                        @* <a asp-action="Edit" asp-route-id="@item.ItemId">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ItemId">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ItemId">Delete</a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+

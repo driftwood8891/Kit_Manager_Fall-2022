@@ -205,6 +205,9 @@ namespace Kit_Manager_Fall_2022.Controllers
         // GET: Equipment/AddItem
         public IActionResult AddItem()
         {
+            ViewBag.InstructorName = new List<string>() { "Rich Bright", "David Pence", "Semi Necibi" };
+            ViewBag.ItemType = new List<string>() { "Single Item" };
+
             ViewData["StudentId"] = new SelectList(_context.Student, "StudentId", "StudentId");
             return View();
         }

@@ -1,4 +1,5 @@
-﻿@model Equipment
+﻿@*@model Equipment*@
+@model Kit_Manager_Fall_2022.Models.Equipment
 
 @{
     ViewData["Title"] = "AddItem";
@@ -15,7 +16,8 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ItemType" class="control-label"></label>
-                <input asp-for="ItemType" class="form-control" />
+	            @*<input asp-for="ItemType" class="form-control" />*@
+	            <select asp-for="ItemType" class="form-control" asp-items="new SelectList(ViewBag.ItemType)" ></select>
                 <span asp-validation-for="ItemType" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -35,7 +37,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="StatusCode" class="control-label"></label>
-                <input asp-for="StatusCode" class="form-control" />
+	            @*<input asp-for="StatusCode" class="form-control" />*@
+	            <select asp-for="StatusCode" class ="form-control" asp-items="Html.GetEnumSelectList<DropDownLists.statusOptions>()"></select>
                 <span asp-validation-for="StatusCode" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -49,7 +52,8 @@
             </div>
             <div class="form-group">
                 <label asp-for="InstructorName" class="control-label"></label>
-                <input asp-for="InstructorName" class="form-control" />
+	            @*<input asp-for="InstructorName" class="form-control" />*@
+	            <select asp-for="InstructorName" class="form-control" asp-items="new SelectList(ViewBag.InstructorName)" ></select>
                 <span asp-validation-for="InstructorName" class="text-danger"></span>
             </div>
             <div class="form-group">
