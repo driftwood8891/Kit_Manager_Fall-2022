@@ -60,7 +60,7 @@ namespace Kit_Manager_Fall_2022
                 context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");      // Protects against cross-site scripting attacks (HTML iframes)
                 context.Response.Headers.Add("X-Content-Type-Options", "nosniff");  // Protects against MIME sniffing (XSS)
                 context.Response.Headers.Add("Referrer-Policy", "no-referrer");     // Controls info the browser should reveal to the web server
-                context.Response.Headers.Add("Expect-CT", "max-age=0");
+                context.Response.Headers.Add("Expect-CT", "max-age=0");             // Prevent website certificate spoofing
                 context.Response.Headers.Add("Feature-Policy",
                     "vibrate 'self' ; " +
                     "camera 'self' ; " +
