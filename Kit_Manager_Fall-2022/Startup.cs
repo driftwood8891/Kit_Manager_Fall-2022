@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Polly;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,13 +53,50 @@ namespace Kit_Manager_Fall_2022
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            app.UseHttpsRedirection();
-            app.UseStaticFiles();
 
-            app.UseRouting();
+            app.Use(async (context, next) =>
+            {
+                context.Response.Headers.Add("X-Xss-Protection", "1");              // Protects against JavaScript Injection Attacks (XSS)
+                context.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");      // Protects against cross-site scripting attacks (HTML iframes)
+                context.Response.Headers.Add("X-Content-Type-Options", "nosniff");  // Protects against MIME sniffing (XSS)
+                context.Response.Headers.Add("Referrer-Policy", "no-referrer");     // Controls info the browser should reveal to the web server
+                context.Response.Headers.Add("Expect-CT", "max-age=0");
+                context.Response.Headers.Add("Feature-Policy",
+                    "vibrate 'self' ; " +
+                    "camera 'self' ; " +
+                    "microphone 'self' ; " +
+                    "speaker 'self' https://youtube.com https://www.youtube.com ;" +
+                    "geolocation 'self' ; " +
+                    "gyroscope 'self' ; " +
+                    "magnetometer 'self' ; " +
+                    "midi 'self' ; " +
+                    "sync-xhr 'self' ; " +
+                    "push 'self' ; " +
+                    "notifications 'self' ; " +
+                    "fullscreen '*' ; " +
+                    "payment 'self' ; ");                                             // Denies access to browser features such as camera and mic 
 
-            app.UseAuthentication();
-            app.UseAuthorization();
+                //context.Response.Headers.Add(
+                //    "Content-Security-Policy-Report-Only",
+                //    "default-src 'self'; http://www.w3.org/2000/svg" +
+                //    "script-src-elem 'self'" +
+                //    "style-src-elem 'self'; https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css " +
+                //    "img-src 'self'; http://www.w3.org/" +
+                //    "font-src 'self'" +
+                //    "media-src 'self'" +
+                //    "frame-src 'self'" +
+                //    "connect-src "
+                //);                                                                    // Controls permitted content sources (XSS)
+                await next();
+            });
+
+            app.UseHttpsRedirection();      // Redirects HTTP requests to HTTPS
+            app.UseStaticFiles();           // Allows use of static files (CSS, JS, images)
+
+            app.UseRouting();               // Adds route matching to the middleware pipeline
+
+            app.UseAuthentication();        // Forces users to be authenticated
+            app.UseAuthorization();         // Ensures that authentication and authorization are used by your web app
 
             app.UseEndpoints(endpoints =>
             {
