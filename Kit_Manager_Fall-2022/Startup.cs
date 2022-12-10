@@ -54,6 +54,8 @@ namespace Kit_Manager_Fall_2022
                 app.UseHsts();
             }
 
+            // Website security headers
+
             app.Use(async (context, next) =>
             {
                 context.Response.Headers.Add("X-Xss-Protection", "1");              // Protects against JavaScript Injection Attacks (XSS)
