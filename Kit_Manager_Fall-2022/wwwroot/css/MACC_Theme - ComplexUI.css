@@ -18,10 +18,10 @@
     The following are the list of classes, can edit/delete them in order to use
     default settings.
 
-        btn.basic
-        btn.edit
-        btn.delete
-        btn.detail
+        btn-basic
+        btn-edit
+        btn-delete
+        btn-detail
         navbar-custom
 
     ***If wanting to switch to SimpleUI, change the file path in _Layout.cshtml

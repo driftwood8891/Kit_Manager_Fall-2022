@@ -1,11 +1,9 @@
-﻿@*Add to make sure Alert is shown*@
+﻿
+
 @if (TempData["success"] != null)
 {
-    //Link to Jquery reference - located in wwwroot, lib, jquery, jquery.min.js
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    //JavaScript .js file
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    //Toastr is a Javascript library for non-blocking notifications
     <script type="text/javascript">
         toastr.success('@TempData["success"]');
     </script>
